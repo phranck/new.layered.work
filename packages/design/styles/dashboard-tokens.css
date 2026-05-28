@@ -1,0 +1,262 @@
+/* =============================================================
+   Dashboard Design Tokens - layered.work
+   Namespace: --ds-
+   Mode: dark only
+   ============================================================= */
+
+:root {
+  /* Brand */
+  --ds-color-brand-50: oklch(0.987 0.015 92);
+  --ds-color-brand-100: oklch(0.965 0.04 92);
+  --ds-color-brand-200: oklch(0.929 0.082 92);
+  --ds-color-brand-300: oklch(0.876 0.112 92);
+  --ds-color-brand-400: oklch(0.82 0.128 92);
+  --ds-color-brand-500: oklch(0.754 0.136 92);
+  --ds-color-brand-600: oklch(0.672 0.122 91);
+  --ds-color-brand-700: oklch(0.581 0.102 90);
+  --ds-color-brand-800: oklch(0.475 0.08 89);
+  --ds-color-brand-900: oklch(0.378 0.058 87);
+  --ds-color-brand-950: oklch(0.252 0.034 85);
+
+  /* Neutral */
+  --ds-color-neutral-50: oklch(0.985 0.001 106.4);
+  --ds-color-neutral-100: oklch(0.961 0.003 106.4);
+  --ds-color-neutral-200: oklch(0.921 0.007 106.4);
+  --ds-color-neutral-300: oklch(0.869 0.012 106.4);
+  --ds-color-neutral-400: oklch(0.706 0.023 48.7);
+  --ds-color-neutral-500: oklch(0.553 0.021 38.2);
+  --ds-color-neutral-600: oklch(0.445 0.017 38.2);
+  --ds-color-neutral-700: oklch(0.374 0.014 38.2);
+  --ds-color-neutral-800: oklch(0.274 0.011 38.2);
+  --ds-color-neutral-900: oklch(0.216 0.009 38.2);
+  --ds-color-neutral-950: oklch(0.147 0.006 38.2);
+
+  /* Status primitives */
+  --ds-color-success-50: oklch(0.982 0.018 155.8);
+  --ds-color-success-600: oklch(0.627 0.194 149.6);
+  --ds-color-success-700: oklch(0.527 0.154 150.1);
+  --ds-color-danger-50: oklch(0.971 0.013 17.4);
+  --ds-color-danger-600: oklch(0.577 0.245 27.3);
+  --ds-color-danger-700: oklch(0.505 0.213 27.3);
+  --ds-color-warning-50: oklch(0.987 0.022 95.3);
+  --ds-color-warning-600: oklch(0.666 0.179 58.3);
+  --ds-color-warning-700: oklch(0.555 0.163 58.3);
+
+  /* Color system */
+  --ds-neutral-c: 0.006;
+  --ds-neutral-h: 250;
+  --ds-L-surface: 0.225;
+  --ds-L-bg: 0.185;
+  --ds-L-elevated: 0.25;
+  --ds-L-inset: 0.205;
+  --ds-L-text: 0.95;
+  --ds-L-muted: 0.65;
+  --ds-L-subtle: 0.5;
+
+  /* Surfaces */
+  --ds-bg: oklch(var(--ds-L-bg) var(--ds-neutral-c) var(--ds-neutral-h));
+  --ds-bg-elevated: oklch(var(--ds-L-elevated) var(--ds-neutral-c) var(--ds-neutral-h));
+  --ds-surface: oklch(var(--ds-L-surface) var(--ds-neutral-c) var(--ds-neutral-h));
+  --ds-surface-alt: oklch(var(--ds-L-inset) var(--ds-neutral-c) var(--ds-neutral-h));
+  --ds-surface-inset: oklch(var(--ds-L-inset) var(--ds-neutral-c) var(--ds-neutral-h));
+  --ds-input-bg: var(--ds-bg-elevated);
+
+  /* Borders */
+  --ds-border: #3d444d;
+  --ds-border-strong: #656c76;
+  --ds-border-subtle: hsl(215 12% 28%);
+
+  /* Text */
+  --ds-text: oklch(var(--ds-L-text) var(--ds-neutral-c) var(--ds-neutral-h));
+  --ds-text-muted: oklch(var(--ds-L-muted) var(--ds-neutral-c) var(--ds-neutral-h));
+  --ds-text-subtle: oklch(var(--ds-L-subtle) var(--ds-neutral-c) var(--ds-neutral-h));
+  --ds-text-inverse: oklch(var(--ds-L-inset) 0 0);
+
+  /* Accent */
+  --ds-accent: var(--ds-color-brand-500);
+  --ds-accent-hover: var(--ds-color-brand-600);
+  --ds-accent-active: var(--ds-color-brand-700);
+  --ds-accent-subtle: hsl(215 30% 20%);
+  --ds-accent-fg: #ffffff;
+
+  /* Status */
+  --ds-success-bg: hsl(135 25% 18%);
+  --ds-success-border: hsl(130 35% 35%);
+  --ds-success-text: hsl(135 50% 55%);
+  --ds-danger-bg: hsl(0 30% 20%);
+  --ds-danger-border: hsl(0 50% 38%);
+  --ds-danger-text: hsl(0 65% 62%);
+  --ds-warning-bg: hsl(40 35% 18%);
+  --ds-warning-border: hsl(40 50% 35%);
+  --ds-warning-text: hsl(38 60% 55%);
+  --ds-info-bg: hsl(215 30% 20%);
+  --ds-info-border: hsl(215 50% 38%);
+  --ds-info-text: hsl(212 70% 65%);
+
+  /* Typography */
+  --ds-font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --ds-font-serif: "Barlow Condensed", system-ui, sans-serif;
+  --ds-font-mono: ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  --ds-scale: 1.333;
+  --ds-text-xs: calc(1rem / var(--ds-scale) / var(--ds-scale));
+  --ds-text-sm: calc(1rem / var(--ds-scale));
+  --ds-text-base: 1rem;
+  --ds-text-lg: calc(1rem * var(--ds-scale));
+  --ds-text-xl: calc(1rem * var(--ds-scale) * var(--ds-scale));
+  --ds-text-2xl: calc(1rem * var(--ds-scale) * var(--ds-scale) * var(--ds-scale));
+  --ds-text-3xl: calc(1rem * var(--ds-scale) * var(--ds-scale) * var(--ds-scale) * var(--ds-scale));
+  --ds-text-4xl: calc(
+    1rem *
+    var(--ds-scale) *
+    var(--ds-scale) *
+    var(--ds-scale) *
+    var(--ds-scale) *
+    var(--ds-scale)
+  );
+  --ds-leading-xs: 1.6;
+  --ds-leading-sm: 1.55;
+  --ds-leading-base: 1.5;
+  --ds-leading-lg: 1.35;
+  --ds-leading-xl: 1.2;
+  --ds-leading-2xl: 1.1;
+  --ds-leading-3xl: 1;
+  --ds-leading-4xl: 1;
+
+  /* Radius and control geometry */
+  --ds-radius-sm: 0.25rem;
+  --ds-radius-md: 0.375rem;
+  --ds-radius-lg: 0.5rem;
+  --ds-radius-xl: 0.75rem;
+  --ds-radius-2xl: 1rem;
+  --ds-radius-3xl: 1.25rem;
+  --ds-radius-pill: 9999px;
+  --radius-control: 0.5rem;
+  --radius-card: 1.25rem;
+  --ds-control-h-action: 2rem;
+  --ds-control-h-icon: 2rem;
+  --ds-control-h-field: 2rem;
+  --ds-control-h-field-large: 2.25rem;
+  --ds-control-h-menu-item: 2rem;
+
+  /* Shadows */
+  --ds-shadow-xs: 0 1px 2px rgb(0 0 0 / 0.4);
+  --ds-shadow-sm: 0 1px 3px rgb(0 0 0 / 0.5), 0 1px 2px rgb(0 0 0 / 0.4);
+  --ds-shadow-md: 0 4px 6px rgb(0 0 0 / 0.45), 0 2px 4px rgb(0 0 0 / 0.35);
+  --ds-shadow-lg: 0 10px 15px rgb(0 0 0 / 0.5), 0 4px 6px rgb(0 0 0 / 0.4);
+  --ds-shadow-xl: 0 20px 25px rgb(0 0 0 / 0.55), 0 8px 10px rgb(0 0 0 / 0.45);
+
+  /* Aliases */
+  --color-primary: var(--ds-accent);
+
+  /* Spacing */
+  --ds-space-xs: 0.375rem;
+  --ds-space-sm: 0.75rem;
+  --ds-space-base: 1.5rem;
+  --ds-space-lg: 2.25rem;
+  --ds-space-xl: 3rem;
+  --ds-space-2xl: 4.5rem;
+
+  /* Focus and interaction */
+  --ds-focus-ring: var(--color-primary);
+  --ds-focus-ring-offset: var(--ds-bg);
+  --ds-border-focus: var(--color-primary);
+  --ds-control-hover-bg: oklch(var(--ds-L-text) var(--ds-neutral-c) var(--ds-neutral-h) / 0.08);
+  --ds-control-active-bg: color-mix(in srgb, var(--color-primary) 22%, transparent);
+  --ds-control-disabled-opacity: 0.4;
+  --ds-bg-hover: var(--ds-control-hover-bg);
+  --ds-surface-hover: var(--ds-control-hover-bg);
+  --ds-nav-text: var(--ds-text-muted);
+  --ds-nav-active-bg: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  --ds-nav-active-text: var(--ds-text);
+  --ds-nav-active-border: var(--ds-border-focus);
+  --ds-nav-hover-bg: var(--ds-nav-active-bg);
+  --ds-nav-hover-text: var(--ds-text);
+
+  /* Motion */
+  --ds-duration-fast: 120ms;
+  --ds-duration-base: 200ms;
+  --ds-duration-slow: 300ms;
+  --ds-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ds-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ds-ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Markdown editor syntax highlighting */
+  --md-heading: #79c0ff;
+  --md-emphasis: #d2a8ff;
+  --md-code: #ffa657;
+  --md-quote: #7ee787;
+  --md-punctuation: #8b949e;
+
+  /* Overlay */
+  --ds-overlay-bg: oklch(0 0 0 / 0.5);
+  --ds-overlay-z-dialog: 2000;
+  --ds-overlay-z-dropdown: 50;
+  --ds-overlay-z-menu: 60;
+  --ds-overlay-shadow: var(--ds-shadow-xl);
+
+  /* Buttons */
+  --ds-btn-filled-bg: var(--ds-color-neutral-700);
+  --ds-btn-filled-hover: var(--ds-color-neutral-600);
+  --ds-btn-filled-fg: #ffffff;
+  --ds-btn-primary-bg: #00aef1;
+  --ds-btn-primary-hover: #0099d4;
+  --ds-btn-primary-fg: #ffffff;
+  --ds-btn-primary-border: hsl(195 40% 30%);
+  --ds-btn-primary-text: hsl(195 80% 62%);
+  --ds-btn-primary-hover-border: hsl(195 50% 45%);
+  --ds-btn-primary-hover-bg: hsl(195 30% 20%);
+  --ds-btn-neutral-border: var(--ds-border);
+  --ds-btn-neutral-text: var(--ds-text-muted);
+  --ds-btn-neutral-hover-border: var(--ds-border-strong);
+  --ds-btn-neutral-hover-bg: hsl(215 12% 24%);
+  --ds-btn-danger-border: hsl(0 40% 30%);
+  --ds-btn-danger-text: hsl(0 65% 62%);
+  --ds-btn-danger-hover-bg: hsl(0 30% 20%);
+  --ds-btn-danger-hover-border: hsl(0 50% 42%);
+  --ds-btn-success-border: hsl(130 30% 30%);
+  --ds-btn-success-text: hsl(135 50% 55%);
+  --ds-btn-success-hover-bg: hsl(135 25% 18%);
+  --ds-btn-success-hover-border: hsl(130 40% 42%);
+  --ds-btn-warning-border: hsl(40 40% 30%);
+  --ds-btn-warning-text: hsl(38 60% 55%);
+  --ds-btn-warning-hover-bg: hsl(40 35% 18%);
+  --ds-btn-warning-hover-border: hsl(40 50% 42%);
+
+  /* Segmented controls */
+  --ds-segment-bg: var(--ds-bg-elevated);
+  --ds-segment-active-bg: var(--ds-control-active-bg);
+  --ds-segment-active-border: color-mix(in srgb, var(--color-primary) 20%, var(--ds-border));
+
+  /* Badges */
+  --ds-badge-pending-bg: hsl(40 40% 20%);
+  --ds-badge-pending-text: hsl(40 70% 65%);
+  --ds-badge-success-bg: hsl(135 30% 18%);
+  --ds-badge-success-text: hsl(135 50% 60%);
+  --ds-badge-danger-bg: hsl(0 35% 20%);
+  --ds-badge-danger-text: hsl(0 70% 65%);
+  --ds-badge-info-bg: hsl(210 40% 22%);
+  --ds-badge-info-text: hsl(210 80% 72%);
+  --ds-badge-review-bg: hsl(270 30% 25%);
+  --ds-badge-review-text: hsl(270 80% 80%);
+  color-scheme: dark;
+}
+
+/* Shared button content alignment. */
+:where(button, a)[class*="var(--ds-btn-"],
+:where(button, a)[class*="var(--ds-accent)"],
+:where(input[type="button"], input[type="submit"], input[type="reset"])[class*="var(--ds-btn-"],
+:where(input[type="button"], input[type="submit"], input[type="reset"])[class*="var(--ds-accent)"],
+:where(a).footer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Transitional textarea guard for legacy formInputClass consumers. */
+:where(textarea)[class*="--ds-control-h-field"] {
+  height: auto;
+  min-height: calc(var(--ds-control-h-field) * 3);
+  padding-block: 0.375rem;
+}

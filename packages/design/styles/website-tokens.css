@@ -1,0 +1,46 @@
+:root {
+  --lw-bg: #171715;
+  --lw-bg-elev: #262623;
+  --lw-border: #3a3a36;
+  --lw-text: #efefec;
+  --lw-muted: #90908a;
+  --lw-accent: #00d9ff;
+  --lw-accent-dim: #0099b3;
+  --lw-stripe-teal: #2b7488;
+  --lw-stripe-olive: #758c34;
+  --lw-stripe-gold: #fbac3e;
+  --lw-stripe-burnt: #c64616;
+  --lw-font-body: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --lw-font-mono:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --lw-heading-weight: 400;
+  --lw-body-weight: 400;
+  --lw-radius-card: 20px;
+  --lw-radius-image: 16px;
+  --lw-radius-control: 12px;
+  --lw-terminal-prompt-color: var(--lw-accent);
+  --lw-terminal-cursor-color: var(--lw-accent);
+  --lw-terminal-cursor-display: inline-block;
+  --lw-content-max: 72rem;
+}
+
+html,
+body {
+  background: var(--lw-bg);
+  color: var(--lw-text);
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--lw-font-body);
+  font-weight: var(--lw-body-weight);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--lw-font-body);
+  font-weight: var(--lw-heading-weight);
+  letter-spacing: 0;
+}

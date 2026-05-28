@@ -1,0 +1,10 @@
+{
+  "name": "@layered/design",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./styles/dashboard-tokens.css": "./styles/dashboard-tokens.css",
+    "./styles/website-tokens.css": "./styles/website-tokens.css"
+  }
+}
