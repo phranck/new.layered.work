@@ -1,7 +1,7 @@
 const DEFAULT_ALLOWED_ORIGINS = [
   "http://localhost:3004",
   "http://localhost:4504",
-  "https://layered.work",
+  "https://new.layered.work",
   "https://dashboard.layered.work",
 ];
 

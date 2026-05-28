@@ -21,7 +21,7 @@ zerops:
         PORT: "3000"
         NODE_ENV: production
         DATABASE_URL: ${postgres_connectionString}
-        CORS_ORIGIN: "https://layered.work,https://dashboard.layered.work"
+        CORS_ORIGIN: "https://new.layered.work,https://dashboard.layered.work"
       initCommands:
         - node apps/backend/dist/db/migrate.js
       start: node apps/backend/dist/index.js
@@ -55,7 +55,7 @@ zerops:
       buildCommands:
         - pnpm --version | grep -q '^11\.2\.2$' || npm install -g pnpm@11.2.2 --force
         - pnpm install --frozen-lockfile
-        - VITE_API_URL=https://api.layered.work pnpm --filter @layered/dashboard build
+        - VITE_API_URL=https://api.layered.work VITE_FRONTEND_URL=https://new.layered.work pnpm --filter @layered/dashboard build
         - cp -r apps/dashboard/dist/. .
         - cp apps/dashboard/nginx.tmpl .
       deployFiles:
