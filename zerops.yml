@@ -1,0 +1,73 @@
+# layered.work — Zerops deployment configuration
+zerops:
+  - setup: backend
+    build:
+      base: nodejs@22
+      buildCommands:
+        - npm install -g pnpm@11.2.2
+        - pnpm install --frozen-lockfile
+        - pnpm --filter @layered/backend build
+      deployFiles:
+        - apps/backend/dist
+        - apps/backend/drizzle
+      cache: node_modules
+    run:
+      base: nodejs@22
+      ports:
+        - port: 3000
+          httpSupport: true
+      envVariables:
+        HOST: "::"
+        PORT: "3000"
+        NODE_ENV: production
+        DATABASE_URL: ${postgres_connectionString}
+        CORS_ORIGIN: "https://layered.work,https://dashboard.layered.work"
+      initCommands:
+        - node apps/backend/dist/db/migrate.js
+      start: node apps/backend/dist/index.js
+
+  - setup: frontend
+    build:
+      base: nodejs@22
+      buildCommands:
+        - npm install -g pnpm@11.2.2
+        - pnpm install --frozen-lockfile
+        - VITE_API_URL=https://api.layered.work pnpm --filter @layered/frontend build
+        - cp -r apps/frontend/dist/. .
+        - cp apps/frontend/nginx.tmpl .
+      deployFiles:
+        - index.html
+        - assets
+        - layered-logo.svg
+        - nginx.tmpl
+      cache: node_modules
+    run:
+      base: nginx@1.22
+      ports:
+        - port: 80
+          httpSupport: true
+      documentRoot: .
+      siteConfigPath: nginx.tmpl
+
+  - setup: dashboard
+    build:
+      base: nodejs@22
+      buildCommands:
+        - npm install -g pnpm@11.2.2
+        - pnpm install --frozen-lockfile
+        - VITE_API_URL=https://api.layered.work pnpm --filter @layered/dashboard build
+        - cp -r apps/dashboard/dist/. .
+        - cp apps/dashboard/nginx.tmpl .
+      deployFiles:
+        - index.html
+        - assets
+        - layered-logo.svg
+        - nginx.tmpl
+      cache: node_modules
+    run:
+      base: nginx@1.22
+      ports:
+        - port: 80
+          httpSupport: true
+      documentRoot: .
+      siteConfigPath: nginx.tmpl
