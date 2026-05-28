@@ -1,0 +1,35 @@
+{
+  "name": "@layered/dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 4504",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4504",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@layered/contracts": "workspace:*",
+    "@layered/design": "workspace:*",
+    "@layered/ui": "workspace:*",
+    "@phosphor-icons/react": "^2.1.10",
+    "@tanstack/react-query": "^5.100.14",
+    "react": "^19.2.3",
+    "react-colorful": "^5.7.0",
+    "react-dom": "^19.2.3",
+    "react-router": "^7.15.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@unocss/reset": "66.7.0",
+    "@vitejs/plugin-react": "^5.1.1",
+    "typescript": "^5.9.3",
+    "unocss": "^66.5.10",
+    "vite": "^7.2.7"
+  }
+}
