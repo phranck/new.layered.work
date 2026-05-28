@@ -95,36 +95,66 @@ jobs:
     runs-on: ubuntu-latest
     needs: detect-changes
     if: needs.detect-changes.outputs.backend == 'true' || (github.event_name == 'workflow_dispatch' && inputs.backend)
+    outputs:
+      deployed: ${{ steps.deploy.outcome == 'success' }}
+    env:
+      ZEROPS_TOKEN: ${{ secrets.ZEROPS_TOKEN }}
+      ZEROPS_SERVICE_ID: ${{ secrets.ZEROPS_BACKEND_SERVICE_ID }}
     steps:
       - uses: actions/checkout@v6
-      - uses: zeropsio/actions@v1.0.1
+      - name: Skip deploy when Zerops secrets are missing
+        if: env.ZEROPS_TOKEN == '' || env.ZEROPS_SERVICE_ID == ''
+        run: echo "Skipping backend deploy because Zerops secrets are not configured."
+      - id: deploy
+        if: env.ZEROPS_TOKEN != '' && env.ZEROPS_SERVICE_ID != ''
+        uses: zeropsio/actions@v1.0.1
         with:
-          access-token: ${{ secrets.ZEROPS_TOKEN }}
-          service-id: ${{ secrets.ZEROPS_BACKEND_SERVICE_ID }}
+          access-token: ${{ env.ZEROPS_TOKEN }}
+          service-id: ${{ env.ZEROPS_SERVICE_ID }}
 
   deploy-frontend:
     name: Deploy Frontend
     runs-on: ubuntu-latest
     needs: detect-changes
     if: needs.detect-changes.outputs.frontend == 'true' || (github.event_name == 'workflow_dispatch' && inputs.frontend)
+    outputs:
+      deployed: ${{ steps.deploy.outcome == 'success' }}
+    env:
+      ZEROPS_TOKEN: ${{ secrets.ZEROPS_TOKEN }}
+      ZEROPS_SERVICE_ID: ${{ secrets.ZEROPS_FRONTEND_SERVICE_ID }}
     steps:
       - uses: actions/checkout@v6
-      - uses: zeropsio/actions@v1.0.1
+      - name: Skip deploy when Zerops secrets are missing
+        if: env.ZEROPS_TOKEN == '' || env.ZEROPS_SERVICE_ID == ''
+        run: echo "Skipping frontend deploy because Zerops secrets are not configured."
+      - id: deploy
+        if: env.ZEROPS_TOKEN != '' && env.ZEROPS_SERVICE_ID != ''
+        uses: zeropsio/actions@v1.0.1
         with:
-          access-token: ${{ secrets.ZEROPS_TOKEN }}
-          service-id: ${{ secrets.ZEROPS_FRONTEND_SERVICE_ID }}
+          access-token: ${{ env.ZEROPS_TOKEN }}
+          service-id: ${{ env.ZEROPS_SERVICE_ID }}
 
   deploy-dashboard:
     name: Deploy Dashboard
     runs-on: ubuntu-latest
     needs: detect-changes
     if: needs.detect-changes.outputs.dashboard == 'true' || (github.event_name == 'workflow_dispatch' && inputs.dashboard)
+    outputs:
+      deployed: ${{ steps.deploy.outcome == 'success' }}
+    env:
+      ZEROPS_TOKEN: ${{ secrets.ZEROPS_TOKEN }}
+      ZEROPS_SERVICE_ID: ${{ secrets.ZEROPS_DASHBOARD_SERVICE_ID }}
     steps:
       - uses: actions/checkout@v6
-      - uses: zeropsio/actions@v1.0.1
+      - name: Skip deploy when Zerops secrets are missing
+        if: env.ZEROPS_TOKEN == '' || env.ZEROPS_SERVICE_ID == ''
+        run: echo "Skipping dashboard deploy because Zerops secrets are not configured."
+      - id: deploy
+        if: env.ZEROPS_TOKEN != '' && env.ZEROPS_SERVICE_ID != ''
+        uses: zeropsio/actions@v1.0.1
         with:
-          access-token: ${{ secrets.ZEROPS_TOKEN }}
-          service-id: ${{ secrets.ZEROPS_DASHBOARD_SERVICE_ID }}
+          access-token: ${{ env.ZEROPS_TOKEN }}
+          service-id: ${{ env.ZEROPS_SERVICE_ID }}
 
   smoke-prod:
     name: Smoke Production
@@ -135,9 +165,9 @@ jobs:
       needs.deploy-backend.result != 'failure' &&
       needs.deploy-frontend.result != 'failure' &&
       needs.deploy-dashboard.result != 'failure' &&
-      (needs.deploy-backend.result == 'success' ||
-       needs.deploy-frontend.result == 'success' ||
-       needs.deploy-dashboard.result == 'success')
+      (needs.deploy-backend.outputs.deployed == 'true' ||
+       needs.deploy-frontend.outputs.deployed == 'true' ||
+       needs.deploy-dashboard.outputs.deployed == 'true')
     steps:
       - uses: actions/checkout@v6
       - run: bash scripts/smoke-prod.sh
