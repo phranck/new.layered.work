@@ -2,6 +2,9 @@
   "name": "layered-work",
   "private": true,
   "packageManager": "pnpm@11.2.2",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "concurrently -k -n backend,frontend,dashboard -c magenta,cyan,yellow \"pnpm dev:backend\" \"pnpm dev:frontend\" \"pnpm dev:dashboard\"",
     "dev:frontend": "pnpm --filter @layered/frontend dev",

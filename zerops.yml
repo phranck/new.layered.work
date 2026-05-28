@@ -2,9 +2,9 @@
 zerops:
   - setup: backend
     build:
-      base: nodejs@22
+      base: nodejs@24
       buildCommands:
-        - npm install -g pnpm@11.2.2
+        - pnpm --version | grep -q '^11\.2\.2$' || npm install -g pnpm@11.2.2 --force
         - pnpm install --frozen-lockfile
         - pnpm --filter @layered/backend build
       deployFiles:
@@ -12,7 +12,7 @@ zerops:
         - apps/backend/drizzle
       cache: node_modules
     run:
-      base: nodejs@22
+      base: nodejs@24
       ports:
         - port: 3000
           httpSupport: true
@@ -28,9 +28,9 @@ zerops:
 
   - setup: frontend
     build:
-      base: nodejs@22
+      base: nodejs@24
       buildCommands:
-        - npm install -g pnpm@11.2.2
+        - pnpm --version | grep -q '^11\.2\.2$' || npm install -g pnpm@11.2.2 --force
         - pnpm install --frozen-lockfile
         - VITE_API_URL=https://api.layered.work pnpm --filter @layered/frontend build
         - cp -r apps/frontend/dist/. .
@@ -51,9 +51,9 @@ zerops:
 
   - setup: dashboard
     build:
-      base: nodejs@22
+      base: nodejs@24
       buildCommands:
-        - npm install -g pnpm@11.2.2
+        - pnpm --version | grep -q '^11\.2\.2$' || npm install -g pnpm@11.2.2 --force
         - pnpm install --frozen-lockfile
         - VITE_API_URL=https://api.layered.work pnpm --filter @layered/dashboard build
         - cp -r apps/dashboard/dist/. .
