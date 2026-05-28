@@ -1,0 +1,28 @@
+{
+  "name": "layered-work",
+  "private": true,
+  "packageManager": "pnpm@11.2.2",
+  "scripts": {
+    "dev": "concurrently -k -n backend,frontend,dashboard -c magenta,cyan,yellow \"pnpm dev:backend\" \"pnpm dev:frontend\" \"pnpm dev:dashboard\"",
+    "dev:frontend": "pnpm --filter @layered/frontend dev",
+    "dev:backend": "pnpm --filter @layered/backend dev",
+    "dev:dashboard": "pnpm --filter @layered/dashboard dev",
+    "build": "pnpm -r --if-present build",
+    "build:frontend": "pnpm --filter @layered/frontend build",
+    "build:backend": "pnpm --filter @layered/backend build",
+    "build:dashboard": "pnpm --filter @layered/dashboard build",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "db:generate": "drizzle-kit generate",
+    "db:setup": "pnpm --filter @layered/backend db:setup",
+    "db:seed": "pnpm --filter @layered/backend db:seed"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.8",
+    "concurrently": "^9.2.1",
+    "drizzle-kit": "^0.31.8",
+    "typescript": "^5.9.3"
+  }
+}
